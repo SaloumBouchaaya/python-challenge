@@ -44,60 +44,34 @@ average_change = sum(changes)/len(changes)
 print("Average Change:", "$" , average_change)
 
 
-
-with open(csvpath, 'r') as csvfile:
-    reader = csv.reader(csvfile)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#date = []
-#profit_loss = []
-#with open(csvpath, newline='') as csvfile:
- #   reader = csv.DictReader(csvfile)
-  #  for row in reader:
-   #     date.append(row['Date'])
-    #    profit_loss.append(float(row['Profit/Losses']))
-     #   for i in range(1,len(values)):
-      #      changes = [profit_loss[i] - profit_loss[i-1] for i in range(1,len(values))]
-       #     greatest_increase = max(changes)
-        #    greatest_increase_index = changes.index(grastest_increase) + 1
-
-#date_greatest_increase = dates[greatest_increase_index]
-
-#print(f"Greatest Increase in profits:", {date_greatest_increase}, "$", {greatest_increase})
-
-
-
+pl=[]
+month=[]
+with open(csvpath, newline='') as csvfile:
+    reader=csv.DictReader(csvfile)
+    for row in reader:
+        pl.append(float(row['Profit/Losses']))
+        month.append(row['Date'])
     
-                                     
+change=[pl[i]-pl[i-1] for i in range(1,len(pl))]
+greatest_inc=max(change)
+greatest_inc_index=change.index(greatest_inc)+1
+greatest_increase_date=month[greatest_inc_index]
+
+print(f"Greatest Increase in Profits:", {greatest_increase_date}, "$",{greatest_inc})
 
 
 
+pl=[]
+month=[]
+with open(csvpath, newline='') as csvfile:
+    reader=csv.DictReader(csvfile)
+    for row in reader:
+        pl.append(float(row['Profit/Losses']))
+        month.append(row['Date'])
+    
+change=[pl[i]-pl[i-1] for i in range(1,len(pl))]
+greatest_dec=min(change)
+greatest_dec_index=change.index(greatest_dec)+1
+greatest_decrease_date=month[greatest_dec_index]
 
-
-
-                                                                                                    
-
-
-
+print(f"Greatest Decrease in Profits:", {greatest_decrease_date}, "$",{greatest_dec})
