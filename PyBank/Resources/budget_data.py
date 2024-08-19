@@ -1,14 +1,21 @@
 import os
 import csv
 
-csvpath =os.path.join("..", 'Class_Folder','Starter_Code (1)', 'Starter_Code','PyBank', 'Resources', 'budget_data')
+csvpath = "C:\\Users\\bouch\\OneDrive\\Desktop\\Starter_Code\\Starter_Code\\PyBank\\Resources\\budget_data.csv"
+
 
 with open(csvpath) as csvfile:
+    csvreader = csv.reader(csvfile, delimiter=',')
     print(csvreader)
-    csv_header=next(csvreader)
-    print(f"CSV Header:{csvreader}")
+
+    csv_header = next(csvreader)
+    print(f"CSV Header: {csv_header}")
 
     for row in csvreader:
         print(row)
+
+        
+
+
 
 
