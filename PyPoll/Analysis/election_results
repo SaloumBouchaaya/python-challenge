@@ -1,0 +1,15 @@
+election_results= {"Total Votes": 369711, "Charles Caper Stockhom": "23.049% (85213)", "Diana DeGette": "73.812% (272892)", "Raymon Anthony Doane": "3,139% (11606)", "Winner": "Diana DeGette"}
+
+with open ("election_results.txt", "w") as file:
+    file.write("Election Results\n")
+    file.write("--------------------\n")
+    for key, value in election_results.items():
+     #   file.write("--------------------\n")
+        file.write(f"{key}:{value}\n")
+        if key == "Total Votes":
+            file.write("--------------------\n")
+        if key == "Raymon Anthony Doane":
+            file.write("--------------------\n")
+
+
+    print("election_results exported to election_results.txt")

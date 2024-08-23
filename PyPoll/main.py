@@ -1,16 +1,20 @@
+# Import Module & CSV Files
 import os
 import csv
 
+# Create a path to data file
 csvpath= "C:\\Users\\bouch\\OneDrive\\Desktop\\Starter_Code\\Starter_Code\\PyPoll\\Resources\\election_data.csv"
 
-#with open(csvpath) as csvfile:
- #   csvreader = csv.reader(csvfile, delimiter =',')
-  #  print(csvreader)
-   # csv_header=next(csvreader)
-  #  print(f"CSV Header: {csv_header}")
-  #  for row in csvreader:
-  #      print(row)
+# Open path as a CSV file, identify header & loop
+ with open(csvpath) as csvfile:
+    csvreader = csv.reader(csvfile, delimiter =',')
+    print(csvreader)
+    csv_header=next(csvreader)
+    print(f"CSV Header: {csv_header}")
+    for row in csvreader:
+        print(row)
 
+# Calculate Total Votes
 row_count=0
 with open(csvpath, newline='') as csvfile:
     reader=csv.reader(csvfile)
@@ -18,10 +22,11 @@ with open(csvpath, newline='') as csvfile:
         row_count += 1
 print(f"Total Votes: {row_count - 1}")
 
-
+# Initialize count & Vote
 vote_counts={}
 total_votes=0
 
+# Loop Candidates & Get vote count
 with open (csvpath, 'r') as csvfile:
     reader=csv.DictReader(csvfile)
     for row in reader:
@@ -31,6 +36,7 @@ with open (csvpath, 'r') as csvfile:
 
         total_votes += 1
 
+# Intialize, calculate & assigen percentages
 percentages = {}
 winner = None
 max_votes = 0
@@ -43,6 +49,7 @@ for candidate, count in vote_counts.items():
 
     percentages[candidate]=percentage
 
+# Find max votes & identitfy winner
     if count>max_votes:
         max_votes=count
         winner=candidate
@@ -50,6 +57,8 @@ for candidate, count in vote_counts.items():
 for candidate in vote_counts:
     count=vote_counts[candidate]
     percentage= f"{percentages[candidate]:.3f}%"
+
+# Print out results
 
     print(f"{candidate}: ,{count},{percentage} ")
 

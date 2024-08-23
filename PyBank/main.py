@@ -1,8 +1,11 @@
+# Import module & csv
 import os
 import csv
 
+# Create a path to file
 csvpath = "C:\\Users\\bouch\\OneDrive\\Desktop\\Starter_Code\\Starter_Code\\PyBank\\Resources\\budget_data.csv"
 
+# Open, read,loop file and identify header
 
 with open(csvpath) as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
@@ -14,7 +17,7 @@ with open(csvpath) as csvfile:
     for row in csvreader:
         print(row)
 
-
+# Calculate amount of months/rows
 row_count = 0
 with open(csvpath, newline='') as csvfile:
     reader = csv.reader(csvfile)
@@ -22,7 +25,7 @@ with open(csvpath, newline='') as csvfile:
         row_count += 1
 print(f"Total Months: {row_count-1}")
 
-
+# Add total of Profit/Loss
 total_sum = 0
 with open(csvpath, newline='') as csvfile:
     reader = csv.DictReader(csvfile)
@@ -30,7 +33,7 @@ with open(csvpath, newline='') as csvfile:
         total_sum += float(row['Profit/Losses'])
 print(f"Total:","$", {total_sum})
 
-
+# Calculate average change in Profit/Loss
 profit_losses_change = []
 with open(csvpath, 'r') as csvfile:
     reader = csv.DictReader(csvfile)
@@ -44,6 +47,7 @@ average_change = sum(changes)/len(changes)
 print("Average Change:", "$" , average_change)
 
 
+# Find Greatest Increase in Profits
 pl=[]
 month=[]
 with open(csvpath, newline='') as csvfile:
@@ -60,7 +64,7 @@ greatest_increase_date=month[greatest_inc_index]
 print(f"Greatest Increase in Profits:", {greatest_increase_date}, "$",{greatest_inc})
 
 
-
+# Find Greatest Decrease in profits
 pl=[]
 month=[]
 with open(csvpath, newline='') as csvfile:
